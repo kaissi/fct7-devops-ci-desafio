@@ -2,7 +2,7 @@ steps:
 
 - id: "Executando testes unitários"
   name: 'gcr.io/cloud-builders/go:alpine'
-  args: [ 'test', './github.com/kaissi/fct7-devops-desafio-ci', '-v' ]
+  args: [ 'test', './github.com/kaissi/fct7-devops-ci-desafio', '-v' ]
   env: ['GOPATH=/go']
 
 - id: "Executando o build para gerar imagem docker"
@@ -11,10 +11,10 @@ steps:
     - 'build'
     - '.'
     - '-t'
-    - 'gcr.io/$PROJECT_ID/fct7-devops-desafio-ci:latest'
+    - 'gcr.io/$PROJECT_ID/fct7-devops-ci-desafio:latest'
     
 - id: "Testando a imagem gerada"
-  name: 'gcr.io/$PROJECT_ID/fct7-devops-desafio-ci:latest'
+  name: 'gcr.io/$PROJECT_ID/fct7-devops-ci-desafio:latest'
 
 images:
-- 'gcr.io/$PROJECT_ID/fct7-devops-desafio-ci:latest'
+- 'gcr.io/$PROJECT_ID/fct7-devops-ci-desafio:latest'
